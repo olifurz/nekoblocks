@@ -1,6 +1,6 @@
 using Godot;
-using System;
-using System.Collections.Generic;
+
+namespace Nekoblocks.scripts;
 
 [Tool]
 public partial class Part : Node3D
@@ -13,7 +13,7 @@ public partial class Part : Node3D
         set
         {
             _size = value;
-            if (IsInsideTree()) Update();
+            Update();
         }
     }
 
@@ -25,7 +25,7 @@ public partial class Part : Node3D
         set
         {
             _surfaces = value;
-            if (IsInsideTree()) Update();
+            Update();
         }
     }
 
@@ -37,7 +37,7 @@ public partial class Part : Node3D
         set
         {
             _brickColor = value;
-            if (IsInsideTree()) Update();
+            Update();
         }
     }
     // Called when the node enters the scene tree for the first time.
@@ -59,8 +59,19 @@ public partial class Part : Node3D
 
         if (meshInstance == null || collider == null) return;
 
-        if (meshInstance.Mesh is BoxMesh box) box.Size = _size;
-        if (collider.Shape is BoxShape3D shape) shape.Size = _size;
+        if (meshInstance.Mesh is BoxMesh box)
+        {
+            var uniqueBox = (BoxMesh)box.Duplicate();
+            uniqueBox.Size = _size;
+            meshInstance.Mesh = uniqueBox;
+        }
+
+        if (collider.Shape is BoxShape3D shape)
+        {
+            var uniqueShape = (BoxShape3D)shape.Duplicate();
+            uniqueShape.Size = _size;
+            collider.Shape = uniqueShape;
+        }
 
         meshInstance.SetInstanceShaderParameter("brick_color", _brickColor);
         meshInstance.SetInstanceShaderParameter("surf_top", _surfaces[0]);

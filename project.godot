@@ -11,8 +11,18 @@ config_version=5
 [application]
 
 config/name="Nekoblocks"
-config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://textures/icon.svg"
+run/main_scene="uid://b340wl0bnwf2x"
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/fullsize=false
+boot_splash/image="uid://c483y8dtlw23e"
+config/icon="uid://cvq7lsf1wjohh"
+
+[display]
+
+window/size/viewport_width=1440
+window/size/viewport_height=1080
+window/size/sharp_corners=true
 
 [dotnet]
 

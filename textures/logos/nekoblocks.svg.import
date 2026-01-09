@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct6xt1brgey75"
-path="res://.godot/imported/icon.svg-3540dd99eafb6c4e602e8c59cee418fa.ctex"
+uid="uid://cexeihal6sgt8"
+path="res://.godot/imported/nekoblocks.svg-d63291774e40fa8460b4688af7ffa985.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-3540dd99eafb6c4e602e8c59cee418fa.ctex"]
+source_file="res://textures/logos/nekoblocks.svg"
+dest_files=["res://.godot/imported/nekoblocks.svg-d63291774e40fa8460b4688af7ffa985.ctex"]
 
 [params]
 

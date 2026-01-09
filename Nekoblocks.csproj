@@ -4,4 +4,12 @@
     <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
+
+  <ItemGroup>
+  <Compile Remove="scripts/roblox-file-format/**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="scripts/roblox-file-format/RobloxFileFormat.csproj" />
+  </ItemGroup>
 </Project>
