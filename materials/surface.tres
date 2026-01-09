@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://qq3bn8d6cj3i"]
+
+[ext_resource type="Shader" uid="uid://ct8nb860s8ng1" path="res://shaders/surface.gdshader" id="1_i1p7j"]
+[ext_resource type="Texture2D" uid="uid://db70krh0lhclq" path="res://textures/surfaces/surfacesAlpha.png" id="2_1pf0p"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_i1p7j")
+shader_parameter/texture_atlas = ExtResource("2_1pf0p")
+shader_parameter/atlas_grid = Vector2(2, 24)

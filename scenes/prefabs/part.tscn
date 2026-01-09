@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bax75nm6k8rm6"]
+
+[ext_resource type="Script" uid="uid://dj634giur4u4e" path="res://scripts/Part.cs" id="1_bi3fx"]
+[ext_resource type="Material" uid="uid://qq3bn8d6cj3i" path="res://materials/surface.tres" id="1_j01oq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vo7lu"]
+resource_local_to_scene = true
+material = ExtResource("1_j01oq")
+size = Vector3(4, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wjago"]
+size = Vector3(4, 1, 2)
+
+[node name="Part" type="StaticBody3D"]
+script = ExtResource("1_bi3fx")
+Size = Vector3(4, 1, 2)
+BrickColor = Color(0.5, 0.5, 0.5, 1)
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+instance_shader_parameters/brick_color = Color(0.5, 0.5, 0.5, 1)
+instance_shader_parameters/roughness = 0.3
+instance_shader_parameters/surf_back = 0
+instance_shader_parameters/surf_bottom = 2
+instance_shader_parameters/surf_front = 0
+instance_shader_parameters/surf_left = 0
+instance_shader_parameters/surf_right = 0
+instance_shader_parameters/surf_top = 1
+mesh = SubResource("BoxMesh_vo7lu")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_wjago")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b340wl0bnwf2x"]
+
+[ext_resource type="PackedScene" uid="uid://bax75nm6k8rm6" path="res://scenes/prefabs/part.tscn" id="1_8jylx"]
+
+[node name="Workspace" type="Node3D"]
+
+[node name="Part" parent="." instance=ExtResource("1_8jylx")]
+BrickColor = Color(0.5, 0.5, 0.5, 1)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.07353291, -0.87132645, -0.485163, 0.008010298, -0.48698026, 0.87337625, -0.9972607, 0.060335666, 0.042788714, 0, 2.825459, 0)
