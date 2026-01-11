@@ -8,7 +8,7 @@ public partial class LocalPlayerCamera : Camera3D
 {
 	// https://en.wikipedia.org/wiki/Spherical_coordinate_system
 
-	private Scripts.LocalPlayer.LocalPlayer _localPlayer;
+	private LocalPlayer.LocalPlayerCharacter _localPlayerCharacter;
 	[Export] public Node3D Head;
 	
 	private float _camDistance = 10f;
@@ -25,7 +25,7 @@ public partial class LocalPlayerCamera : Camera3D
 	{
 		Theta = Phi = Deg2Rad(90);
 		Phi = Deg2Rad(60);
-		_localPlayer = GetParent<Scripts.LocalPlayer.LocalPlayer>();
+		_localPlayerCharacter = GetParent<LocalPlayer.LocalPlayerCharacter>();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,12 +65,12 @@ public partial class LocalPlayerCamera : Camera3D
 		if (Input.IsActionJustPressed("camera_snap_left"))
 		{
 			Theta += Deg2Rad(45);
-			_localPlayer.Sounds.PlayOneShot(PlayerSound.Scroll);
+			_localPlayerCharacter.Sounds.PlayOneShot(PlayerSound.Scroll);
 		}
 		if (Input.IsActionJustPressed("camera_snap_right"))
 		{
 			Theta += Deg2Rad(-45);
-			_localPlayer.Sounds.PlayOneShot(PlayerSound.Scroll);
+			_localPlayerCharacter.Sounds.PlayOneShot(PlayerSound.Scroll);
 		}
 
 		float zoomDelta = 0;
@@ -80,7 +80,7 @@ public partial class LocalPlayerCamera : Camera3D
 		if (zoomDelta != 0)
 		{
 			_targetZoom = Mathf.Clamp(_targetZoom + zoomDelta, 2, 80);
-        
+		
 			AnimateZoom();
 		}
 		
@@ -103,8 +103,8 @@ public partial class LocalPlayerCamera : Camera3D
 		{
 			_zoomTween?.Kill();
 			_zoomTween = GetTree().CreateTween();
-    
-			_localPlayer.Sounds.PlayOneShot(PlayerSound.Scroll);
+	
+			_localPlayerCharacter.Sounds.PlayOneShot(PlayerSound.Scroll);
 
 			_zoomTween.TweenProperty(this, nameof(_camDistance), _targetZoom, 0.15f)
 				.SetTrans(Tween.TransitionType.Quint)

@@ -1,15 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://b340wl0bnwf2x"]
+[gd_scene load_steps=18 format=3 uid="uid://b340wl0bnwf2x"]
 
 [ext_resource type="Script" uid="uid://dsugo3y72lieq" path="res://Scripts/World/Workspace.cs" id="1_3k6gv"]
-[ext_resource type="Script" uid="uid://woregxoe1mhw" path="res://Scripts/LocalPlayer/LocalPlayer.cs" id="2_1q8bt"]
 [ext_resource type="Script" uid="uid://dkkcbppxkwhuj" path="res://Scripts/LocalPlayer/LocalPlayerCamera.cs" id="3_gvja8"]
+[ext_resource type="Script" uid="uid://woregxoe1mhw" path="res://Scripts/LocalPlayer/LocalPlayerCharacter.cs" id="4_1q8bt"]
 [ext_resource type="PackedScene" uid="uid://bax75nm6k8rm6" path="res://Scenes/Prefabs/part.tscn" id="4_m1o7v"]
 [ext_resource type="Script" uid="uid://balkajs77cnuj" path="res://Scripts/LocalPlayer/LocalPlayerSounds.cs" id="5_1q8bt"]
 [ext_resource type="Texture2D" uid="uid://44mr3jh4y0mg" path="res://Textures/Sky/default.png" id="5_3586x"]
 [ext_resource type="Script" uid="uid://dd7lfd142u3xw" path="res://Scripts/TestMapLoader.cs" id="6_10ki7"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ukjwy"]
-size = Vector3(4, 5, 1)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_eselh"]
 panorama = ExtResource("5_3586x")
@@ -24,6 +21,149 @@ ambient_light_source = 2
 ambient_light_color = Color(0.5, 0.5, 0.5, 1)
 reflected_light_source = 1
 
+[sub_resource type="Animation" id="Animation_gvja8"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightLegJoint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftLegJoint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftArmJoint")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightArmJoint")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_m1o7v"]
+resource_name = "player_idle"
+length = 5.0
+step = 0.25
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightLegJoint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 5, 1, 0, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftLegJoint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 5, 1, 0, 0, 0, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftArmJoint")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1.5, 1, 0, 0, 0, 1, 2, 1, 0.13052613, 0, 0, 0.99144477, 3, 1, -0.13052621, 0, 0, 0.9914447, 3.5, 1, 0, 0, 0, 1, 5, 1, 0, 0, 0, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightArmJoint")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1.5, 1, 0, 0, 0, 1, 2, 1, 0.13052613, 0, 0, 0.99144477, 3, 1, -0.13052621, 0, 0, 0.9914447, 3.5, 1, 0, 0, 0, 1, 5, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_3586x"]
+resource_name = "player_jump"
+length = 0.33335
+step = 0.16666667
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightLegJoint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftLegJoint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftArmJoint")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.16666667, 1, 0.70710623, 0, 0, 0.7071068, 0.33333334, 1, 0.9999998, 0, 0, -4.3711367e-08)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightArmJoint")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.16666667, 1, 0.7071063, 0, 0, 0.70710677, 0.33333334, 1, 0.9999998, 0, 0, 4.3711367e-08)
+
+[sub_resource type="Animation" id="Animation_1q8bt"]
+resource_name = "player_walk"
+length = 1.000025
+step = 0.25
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightLegJoint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, 0.25881898, 0, 0, 0.96592575, 0.5, 1, 0, 0, 0, 1, 0.75, 1, -0.25881898, 0, 0, 0.96592575, 1, 1, 0, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftLegJoint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, -0.258819, 0, 0, 0.96592575, 0.5, 1, 0, 0, 0, 1, 0.75, 1, 0.258819, 0, 0, 0.96592575, 1, 1, 0, 0, 0, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftArmJoint")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, 0.25881898, 0, 0, 0.96592575, 0.5, 1, 0, 0, 0, 1, 0.75, 1, -0.25881898, 0, 0, 0.96592575, 1, 1, 0, 0, 0, 1)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightArmJoint")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, -0.25881898, 0, 0, 0.96592575, 0.5, 1, 0, 0, 0, 1, 0.75, 1, 0.25881898, 0, 0, 0.96592575, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1o7v"]
+_data = {
+&"RESET": SubResource("Animation_gvja8"),
+&"player_idle": SubResource("Animation_m1o7v"),
+&"player_jump": SubResource("Animation_3586x"),
+&"player_walk": SubResource("Animation_1q8bt")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ukjwy"]
+size = Vector3(2, 4.5, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1q8bt"]
+
 [node name="Game" type="Node3D"]
 
 [node name="Players" type="Node" parent="."]
@@ -32,75 +172,7 @@ unique_name_in_owner = true
 [node name="Workspace" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_3k6gv")
-
-[node name="LocalPlayer" type="CharacterBody3D" parent="Workspace" node_paths=PackedStringArray("Camera", "Sounds")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-collision_layer = 2
-floor_max_angle = 1.3962634
-script = ExtResource("2_1q8bt")
-Camera = NodePath("Camera")
-Sounds = NodePath("Sounds")
-
-[node name="Camera" type="Camera3D" parent="Workspace/LocalPlayer" node_paths=PackedStringArray("Head")]
-fov = 80.0
-script = ExtResource("3_gvja8")
-Head = NodePath("../Character/Head")
-
-[node name="Character" type="Node3D" parent="Workspace/LocalPlayer"]
-
-[node name="Torso" parent="Workspace/LocalPlayer/Character" instance=ExtResource("4_m1o7v")]
-collision_layer = 128
-Size = Vector3(2, 2, 1)
-Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
-BrickColor = Color(0.98, 0, 0.016333085, 1)
-CanCollide = false
-
-[node name="RightArm" parent="Workspace/LocalPlayer/Character" instance=ExtResource("4_m1o7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-collision_layer = 128
-Size = Vector3(1, 2, 1)
-Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
-BrickColor = Color(1, 1, 1, 1)
-CanCollide = false
-
-[node name="LeftArm" parent="Workspace/LocalPlayer/Character" instance=ExtResource("4_m1o7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
-collision_layer = 128
-Size = Vector3(1, 2, 1)
-Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
-BrickColor = Color(1, 1, 1, 1)
-CanCollide = false
-
-[node name="LeftLeg" parent="Workspace/LocalPlayer/Character" instance=ExtResource("4_m1o7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -2, 0)
-collision_layer = 128
-Size = Vector3(1, 2, 1)
-Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
-BrickColor = Color(0, 0, 0, 1)
-CanCollide = false
-
-[node name="RightLeg" parent="Workspace/LocalPlayer/Character" instance=ExtResource("4_m1o7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -2, 0)
-collision_layer = 128
-Size = Vector3(1, 2, 1)
-Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
-BrickColor = Color(0, 0, 0, 1)
-CanCollide = false
-
-[node name="Head" parent="Workspace/LocalPlayer/Character" instance=ExtResource("4_m1o7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7252903e-08, 1.5, 0)
-collision_layer = 128
-Size = Vector3(1, 1, 1)
-Surfaces = PackedInt32Array(0, 0, 3, 0, 0, 0)
-BrickColor = Color(1, 1, 1, 1)
-CanCollide = false
-
-[node name="Sounds" type="Node" parent="Workspace/LocalPlayer"]
-script = ExtResource("5_1q8bt")
-
-[node name="Collider" type="CollisionShape3D" parent="Workspace/LocalPlayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_ukjwy")
+Gravity = null
 
 [node name="Lighting" type="Node" parent="Workspace"]
 unique_name_in_owner = true
@@ -119,3 +191,109 @@ environment = SubResource("Environment_iqevm")
 
 [node name="TestMapLoader" type="Node" parent="Workspace"]
 script = ExtResource("6_10ki7")
+
+[node name="Character" type="CharacterBody3D" parent="Workspace" node_paths=PackedStringArray("Camera", "Sounds", "AnimationPlayer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+collision_layer = 128
+script = ExtResource("4_1q8bt")
+Camera = NodePath("Camera")
+Sounds = NodePath("Sounds")
+AnimationPlayer = NodePath("AnimationPlayer")
+
+[node name="Torso" parent="Workspace/Character" instance=ExtResource("4_m1o7v")]
+collision_layer = 128
+Size = Vector3(2, 2, 1)
+Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+BrickColor = Color(0.98, 0, 0.016333085, 1)
+_size = Vector3(2, 2, 1)
+_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+_brickColor = Color(0.98, 0, 0.016333085, 1)
+CanCollide = false
+
+[node name="Head" parent="Workspace/Character" instance=ExtResource("4_m1o7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7252903e-08, 1.5, 0)
+collision_layer = 128
+Size = Vector3(1, 1, 1)
+Surfaces = PackedInt32Array(0, 0, 3, 0, 0, 0)
+BrickColor = Color(1, 1, 1, 1)
+_size = Vector3(1, 1, 1)
+_surfaces = PackedInt32Array(0, 0, 3, 0, 0, 0)
+_brickColor = Color(1, 1, 1, 1)
+CanCollide = false
+
+[node name="RightArmJoint" type="Node3D" parent="Workspace/Character"]
+transform = Transform3D(1, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, -1, 0.5, 0)
+
+[node name="RightArm" parent="Workspace/Character/RightArmJoint" instance=ExtResource("4_m1o7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 0)
+collision_layer = 128
+Size = Vector3(1, 2, 1)
+Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+BrickColor = Color(1, 1, 1, 1)
+_size = Vector3(1, 2, 1)
+_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+_brickColor = Color(1, 1, 1, 1)
+CanCollide = false
+
+[node name="LeftArmJoint" type="Node3D" parent="Workspace/Character"]
+transform = Transform3D(1, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 1, 0.5, 0)
+
+[node name="LeftArm" parent="Workspace/Character/LeftArmJoint" instance=ExtResource("4_m1o7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0)
+collision_layer = 128
+Size = Vector3(1, 2, 1)
+Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+BrickColor = Color(1, 1, 1, 1)
+_size = Vector3(1, 2, 1)
+_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+_brickColor = Color(1, 1, 1, 1)
+CanCollide = false
+
+[node name="LeftLegJoint" type="Node3D" parent="Workspace/Character"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0.5, -1.0000002, 0)
+
+[node name="LeftLeg" parent="Workspace/Character/LeftLegJoint" instance=ExtResource("4_m1o7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99999976, 0)
+collision_layer = 128
+Size = Vector3(1, 2, 1)
+Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+BrickColor = Color(0, 0, 0, 1)
+_size = Vector3(1, 2, 1)
+_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+_brickColor = Color(0, 0, 0, 1)
+CanCollide = false
+
+[node name="RightLegJoint" type="Node3D" parent="Workspace/Character"]
+transform = Transform3D(1, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, -0.5, -1.0000002, 0)
+
+[node name="RightLeg" parent="Workspace/Character/RightLegJoint" instance=ExtResource("4_m1o7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99999976, 0)
+collision_layer = 128
+Size = Vector3(1, 2, 1)
+Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+BrickColor = Color(0, 0, 0, 1)
+_size = Vector3(1, 2, 1)
+_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+_brickColor = Color(0, 0, 0, 1)
+CanCollide = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Workspace/Character"]
+libraries = {
+&"": SubResource("AnimationLibrary_m1o7v")
+}
+
+[node name="Sounds" type="Node" parent="Workspace/Character"]
+script = ExtResource("5_1q8bt")
+
+[node name="Collider" type="CollisionShape3D" parent="Workspace/Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_ukjwy")
+
+[node name="Collider2" type="CollisionShape3D" parent="Workspace/Character"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, -2.5, 0)
+shape = SubResource("CylinderShape3D_1q8bt")
+
+[node name="Camera" type="Camera3D" parent="Workspace/Character" node_paths=PackedStringArray("Head")]
+fov = 80.0
+script = ExtResource("3_gvja8")
+Head = NodePath("../Head")
