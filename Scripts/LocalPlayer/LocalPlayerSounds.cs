@@ -10,8 +10,7 @@ public partial class LocalPlayerSounds : Node
     private readonly List<AudioStreamPlayer> _playerPool = [];
     private readonly int _poolSize = 8;
     
-    // Store the actual AudioStream objects to avoid disk lag
-    private Dictionary<PlayerSound, AudioStream> _soundCache = new();
+    private readonly Dictionary<PlayerSound, AudioStream> _soundCache = new();
 
     public override void _Ready()
     {
@@ -21,7 +20,7 @@ public partial class LocalPlayerSounds : Node
 
     private void SetupPool()
     {
-        for (int i = 0; i < _poolSize; i++)
+        for (var i = 0; i < _poolSize; i++)
         {
             var player = new AudioStreamPlayer { Bus = "SFX" };
             AddChild(player);
@@ -48,7 +47,8 @@ public partial class LocalPlayerSounds : Node
                 // Get name without extension
                 string nameOnly = fileName.GetBaseName();
                 
-                if (Enum.TryParse(nameOnly, out PlayerSound soundEnum))
+                // Pascal case as enum values have a capital letter
+                if (Enum.TryParse(nameOnly.ToPascalCase(), out PlayerSound soundEnum))
                 {
                     var stream = GD.Load<AudioStream>(path + fileName);
                     _soundCache[soundEnum] = stream;
@@ -63,11 +63,10 @@ public partial class LocalPlayerSounds : Node
         if (!_soundCache.TryGetValue(sound, out var stream)) return;
 
         var availablePlayer = _playerPool.FirstOrDefault(p => !p.Playing);
-        if (availablePlayer != null)
-        {
-            availablePlayer.Stream = stream;
-            availablePlayer.Play();
-        }
+        if (availablePlayer == null) return;
+        
+        availablePlayer.Stream = stream;
+        availablePlayer.Play();
     }
 }
 

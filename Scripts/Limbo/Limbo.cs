@@ -89,13 +89,13 @@ public partial class Limbo : Node
 			var game = gameScene.Instantiate();
 			
 			GetTree().Root.AddChild(game);
+			GetTree().CurrentScene = game;
+
 
 			var networkManager = game.GetNode<NetworkManager>("%NetworkManager");
 			_loadingLabel.Text = "Starting server";
 			networkManager.StartHost();
-
-			GetTree().CurrentScene = game;
-
+			
 			_loadingLabel.Text = "Server started!";
 			QueueFree();
 		}

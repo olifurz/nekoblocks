@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b340wl0bnwf2x"]
+[gd_scene load_steps=9 format=3 uid="uid://b340wl0bnwf2x"]
 
 [ext_resource type="Script" uid="uid://dsugo3y72lieq" path="res://Scripts/World/Workspace.cs" id="1_3k6gv"]
 [ext_resource type="Texture2D" uid="uid://44mr3jh4y0mg" path="res://Textures/Sky/default.png" id="5_3586x"]
+[ext_resource type="Script" uid="uid://c0et4gn63uo4r" path="res://Scripts/Networking/Chat.cs" id="5_wdpi3"]
 [ext_resource type="Script" uid="uid://0i8p2yr8m21p" path="res://Scripts/Networking/NetworkManager.cs" id="5_y3kpf"]
 [ext_resource type="Script" uid="uid://dd7lfd142u3xw" path="res://Scripts/TestMapLoader.cs" id="6_10ki7"]
 
@@ -46,8 +47,21 @@ environment = SubResource("Environment_iqevm")
 script = ExtResource("6_10ki7")
 
 [node name="SpawnLocation" type="Node3D" parent="Workspace"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
 [node name="NetworkManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_y3kpf")
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="NetworkManager"]
+_spawnable_scenes = PackedStringArray("uid://cvtd0iyo6wufb")
+spawn_path = NodePath("../../Players")
+
+[node name="CharacterSpawner" type="MultiplayerSpawner" parent="NetworkManager"]
+_spawnable_scenes = PackedStringArray("uid://dls2aluvah24q")
+spawn_path = NodePath("../../Workspace")
+
+[node name="Chat" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_wdpi3")

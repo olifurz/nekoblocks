@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Nekoblocks.LocalPlayer;
 
@@ -8,11 +9,22 @@ public partial class Player : Node
 	public int Id;
 	public string Username;
 	public LocalPlayerCharacter Character { get; private set; }
-	
+
+	public Control PlayerGui { get; private set; }
+
 	public override void _EnterTree()
 	{
-		// Sync the authority here so inputs only work for the owner
-		SetMultiplayerAuthority(Id);
+		Id = int.Parse(Name); // Assuming Name is set to Peer ID
+		PlayerGui = GetNode<Control>("PlayerGui");
+
+		if (!IsMultiplayerAuthority())
+		{
+			PlayerGui.QueueFree();
+		}
+		else
+		{
+			Chat.Instance.RegisterLocalPlayer(this); 
+		}
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true)]
@@ -20,9 +32,15 @@ public partial class Player : Node
 	{
 		if (Multiplayer.GetRemoteSenderId() != 1 && Multiplayer.GetRemoteSenderId() != 0) return;
 		
-		while (!HasNode(characterPath))
+		var timeout = 120;
+		while (!GetTree().Root.HasNode(characterPath) && timeout > 0)
 		{
 			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+			timeout--;
+		}
+		if (timeout <= 0)
+		{
+			throw new NullReferenceException("$\"Failed to find character at {characterPath} for Player {Id}\"");
 		}
 
 		Character = GetNode<LocalPlayerCharacter>(characterPath);

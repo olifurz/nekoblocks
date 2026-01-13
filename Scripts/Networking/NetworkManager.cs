@@ -11,7 +11,12 @@ namespace Nekoblocks.Networking;
 /// </summary>
 public partial class NetworkManager : Node
 {
-	private ENetMultiplayerPeer _peer = new ENetMultiplayerPeer();
+	public static NetworkManager Instance { get; private set; }
+	
+	private ENetMultiplayerPeer _peer = new();
+
+	private MultiplayerSpawner _playerSpawner;
+	private MultiplayerSpawner _characterSpawner;
 	public override void _Ready()
 	{
 		// --- Server & Client (Common) ---
@@ -22,11 +27,17 @@ public partial class NetworkManager : Node
 		Multiplayer.ConnectedToServer += OnConnectedToServer;
 		Multiplayer.ConnectionFailed += OnConnectionFailed;
 		Multiplayer.ServerDisconnected += OnServerDisconnected;
+
+		_playerSpawner = GetNode<MultiplayerSpawner>("PlayerSpawner");
+		_playerSpawner.SpawnFunction = Callable.From<Variant, Node>(SpawnPlayer);
+		
+		_characterSpawner = GetNode<MultiplayerSpawner>("CharacterSpawner");
+		_characterSpawner.SpawnFunction = Callable.From<Variant, Node>(SpawnCharacter);
 	}
 	
 	public override void _Process(double delta)
 	{
-		
+		Instance = this;
 	}
 
 	private void Terminate()
@@ -41,7 +52,7 @@ public partial class NetworkManager : Node
 	private void OnPeerConnected(long id)
 	{
 		if (id == 1) return;
-		AddPlayer((int)id);
+		InitPlayer((int)id);
 	}
 	
 	private void OnPeerDisconnected(long id)
@@ -53,6 +64,35 @@ public partial class NetworkManager : Node
 			.QueueFree();
 	}
 	
+	private Node SpawnPlayer(Variant data)
+	{
+		var dict = data.AsGodotDictionary();
+		var id = dict["id"].AsInt32();
+		
+		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/Prefabs/Player.tscn");
+		var player = (Player)scene.Instantiate();
+		
+		player.Name = id.ToString();
+		player.Id = id;
+		player.SetMultiplayerAuthority(id);
+		
+		return player;
+	}
+
+	private Node SpawnCharacter(Variant data)
+	{
+		var dict = data.AsGodotDictionary();
+		var id = dict["id"].AsInt32();
+		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/Prefabs/Character.tscn");
+		var character = (LocalPlayerCharacter)scene.Instantiate();
+		
+		character.Name = id.ToString();
+		character.Position = dict["position"].AsVector3();
+		character.SetMultiplayerAuthority(id);
+		
+		return character;
+	}
+	
 	///////////////////////////////////////////////
 	//////////////// Host Functions ///////////////
 	///////////////////////////////////////////////
@@ -61,7 +101,7 @@ public partial class NetworkManager : Node
 	{
 		StartServer();
 		
-		AddPlayer(1);
+		InitPlayer(1);
 	}
 	
 	
@@ -78,30 +118,25 @@ public partial class NetworkManager : Node
 		GD.Print("Server created");
 	}
 
-	private void AddPlayer(int id)
+	private void InitPlayer(int id, string username = "Neko")
 	{
 		if (!Multiplayer.IsServer()) return;
-		if (GetNode("%Players").HasNode(id.ToString())) return;
-		
-		var playerScene = ResourceLoader.Load<PackedScene>("res://Scenes/Prefabs/Player.tscn");
-		var characterScene = ResourceLoader.Load<PackedScene>("res://Scenes/Prefabs/Character.tscn");
-		
-		var player = (Player)playerScene.Instantiate();
-		var character = (LocalPlayerCharacter)characterScene.Instantiate();
 
-		player.Id = id;
-		player.Name = id.ToString();
-		character.Name = "Char_" + id;
-		
-		player.SetMultiplayerAuthority(id);
-		character.SetMultiplayerAuthority(id);
+		var spawnLocation = GetNode<Node3D>("%SpawnLocation").GlobalPosition;
+		var data = new Godot.Collections.Dictionary 
+		{
+			{ "id", id },
+			{ "username", username },
+			{ "position", spawnLocation }
+		};
 
-		var workspace = GetNode("%Workspace");
-		GetNode("%Players").AddChild(player);
-		workspace.AddChild(character);
-		var spawnLocation = workspace.GetNodeOrNull<Node3D>("SpawnLocation");
-		if (spawnLocation != null) character.Position = spawnLocation.Position;
-
+		var player = _playerSpawner.Spawn(data);
+		var character = _characterSpawner.Spawn(data);
+		CallDeferred(MethodName.LinkPlayerAndCharacter, player, character);
+	}
+	
+	private void LinkPlayerAndCharacter(Player player, LocalPlayerCharacter character)
+	{
 		player.Rpc(nameof(Player.SetCharacter), character.GetPath());
 	}
 	
