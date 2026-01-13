@@ -1,11 +1,9 @@
 using Godot;
 
-namespace Nekoblocks.Scripts.World;
+namespace Nekoblocks.World;
 
 public partial class Workspace : Node
 {
-	
-	[Export] public float Gravity = 9.81f;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

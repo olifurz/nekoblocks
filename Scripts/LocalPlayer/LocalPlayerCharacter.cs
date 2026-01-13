@@ -1,9 +1,7 @@
 using System;
 using Godot;
-using Nekoblocks.Scripts.Player;
-using Nekoblocks.Scripts.World;
 
-namespace Nekoblocks.Scripts.LocalPlayer;
+namespace Nekoblocks.LocalPlayer;
 
 public partial class LocalPlayerCharacter : CharacterBody3D
 {
@@ -29,12 +27,14 @@ public partial class LocalPlayerCharacter : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (!IsMultiplayerAuthority()) return;
+		
 		_velocity = Velocity;
-		string nextAnim = "player_idle";
+		var nextAnim = "player_idle";
 		
 		if (!IsOnFloor())
 		{
-			_velocity.Y -= GetNode<Workspace>("%Workspace").Gravity * _mass * (float)delta;
+			_velocity.Y -= -GetGravity().Y * _mass * (float)delta;
 			nextAnim = "player_jump"; 
 		}
 		else
@@ -53,6 +53,9 @@ public partial class LocalPlayerCharacter : CharacterBody3D
 		Vector2 inputDir = Input.GetVector("player_move_left", "player_move_right", "player_move_forward", "player_move_back");
 		Vector3 direction = Camera.GlobalBasis * new Vector3(inputDir.X, 0, inputDir.Y);
 		direction.Y = 0;
+		
+		if (direction.Length() > 0)
+			direction = direction.Normalized();
 
 		if (direction != Vector3.Zero)
 		{
@@ -84,6 +87,21 @@ public partial class LocalPlayerCharacter : CharacterBody3D
 	private void ChangeAnimation(string newAnim)
 	{
 		if (AnimationPlayer.CurrentAnimation == newAnim) return;
+
+		switch (newAnim)
+		{
+			case "player_jump" when !IsOnFloor() && !AnimationPlayer.IsPlaying():
+				// Special handling so that the player jump animation doesn't repeat whilst in the air
+				return;
+			case "player_walk":
+				AnimationPlayer.SpeedScale = 1 + WalkSpeed / 15;
+				break;
+			default:
+				AnimationPlayer.SpeedScale = 1;
+				break;
+		}
+
+
 		AnimationPlayer.Stop();
 		AnimationPlayer.Play(newAnim);
 	}

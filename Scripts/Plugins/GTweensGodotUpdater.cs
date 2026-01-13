@@ -1,6 +1,6 @@
 using GTweensGodot.Contexts;
 
-namespace Nekoblocks.Scripts.Plugins;
+namespace Nekoblocks.Plugins;
 
 public partial class GTweensGodotUpdater : GodotGTweensContextNode
 {

@@ -1,14 +1,13 @@
 using System;
 using Godot;
-using Nekoblocks.Scripts.LocalPlayer;
 
-namespace Nekoblocks.Scripts.Player;
+namespace Nekoblocks.LocalPlayer;
 
 public partial class LocalPlayerCamera : Camera3D
 {
 	// https://en.wikipedia.org/wiki/Spherical_coordinate_system
 
-	private LocalPlayer.LocalPlayerCharacter _localPlayerCharacter;
+	private LocalPlayerCharacter _localPlayerCharacter;
 	[Export] public Node3D Head;
 	
 	private float _camDistance = 10f;
@@ -25,7 +24,7 @@ public partial class LocalPlayerCamera : Camera3D
 	{
 		Theta = Phi = Deg2Rad(90);
 		Phi = Deg2Rad(60);
-		_localPlayerCharacter = GetParent<LocalPlayer.LocalPlayerCharacter>();
+		_localPlayerCharacter = GetParent<LocalPlayerCharacter>();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

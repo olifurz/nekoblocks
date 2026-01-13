@@ -3,6 +3,7 @@ using System.IO;
 using Godot;
 using RobloxFiles;
 using FileAccess = Godot.FileAccess;
+using Part = Nekoblocks.Instances.Part;
 
 namespace Nekoblocks.Scripts;
 
@@ -27,7 +28,7 @@ public partial class TestMapLoader : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_partPrefab = GD.Load<PackedScene>("res://Scenes/Prefabs/part.tscn");
+		_partPrefab = GD.Load<PackedScene>("res://Scenes/Prefabs/Part.tscn");
 
 
 		using var file = FileAccess.Open("res://test.rbxl", FileAccess.ModeFlags.Read);
@@ -42,7 +43,7 @@ public partial class TestMapLoader : Node
 	{
 		foreach (var descendent in _data.GetDescendantsOfType<RobloxFiles.Part>())
 		{
-			var newPart = _partPrefab.Instantiate<Instances.Part>();
+			var newPart = _partPrefab.Instantiate<Part>();
 			newPart.Name = descendent.Name;
 
 			var cf = descendent.CFrame;

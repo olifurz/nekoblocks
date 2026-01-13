@@ -1,6 +1,6 @@
 using Godot;
 
-namespace Nekoblocks.Scripts.Instances;
+namespace Nekoblocks.Instances;
 
 [Tool]
 public partial class Part : Node3D

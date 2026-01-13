@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 
-namespace Nekoblocks.Scripts.LocalPlayer;
+namespace Nekoblocks.LocalPlayer;
 
 public partial class LocalPlayerSounds : Node
 {

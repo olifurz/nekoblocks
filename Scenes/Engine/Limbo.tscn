@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmik3jh0riw18"]
+
+[ext_resource type="Texture2D" uid="uid://44mr3jh4y0mg" path="res://Textures/Sky/default.png" id="1_4fl84"]
+[ext_resource type="Script" uid="uid://vdtb31vc137y" path="res://Scripts/Limbo/Limbo.cs" id="1_ty83q"]
+[ext_resource type="Texture2D" uid="uid://cexeihal6sgt8" path="res://Textures/Logos/nekoblocks.svg" id="2_ty83q"]
+
+[node name="Limbo" type="Control" node_paths=PackedStringArray("Loading", "Login")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ty83q")
+Loading = NodePath("Panel/Loading")
+Login = NodePath("Panel/Login")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4fl84")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Loading" type="VBoxContainer" parent="Panel"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/Loading"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Please wait"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Login" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -219.0
+offset_right = 200.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="Panel/Login"]
+layout_mode = 2
+texture = ExtResource("2_ty83q")
+expand_mode = 5
+
+[node name="Quote" type="Label" parent="Panel/Login"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Better than ROBLOX now"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ServerIP" type="LineEdit" parent="Panel/Login"]
+layout_mode = 2
+placeholder_text = "Server IP"
+alignment = 1
+
+[node name="LoginButton" type="Button" parent="Panel/Login"]
+layout_mode = 2
+text = "Connect"
+
+[node name="Spacer" type="Control" parent="Panel/Login"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="ServerButton" type="Button" parent="Panel/Login"]
+layout_mode = 2
+text = "Start Host"
