@@ -1,0 +1,65 @@
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cqcv8x3aun57m"]
+
+[ext_resource type="StyleBox" uid="uid://4d2kobdj8j3a" path="res://UI/button-disabled.tres" id="1_imv5r"]
+[ext_resource type="StyleBox" uid="uid://c8qcdt3rjvwxg" path="res://UI/button-primary-hover.tres" id="2_nw7ks"]
+[ext_resource type="StyleBox" uid="uid://cc8nblc2j4xhn" path="res://UI/button-focus.tres" id="2_ys2u5"]
+[ext_resource type="StyleBox" uid="uid://bwh8g72vhxlw5" path="res://UI/button-primary.tres" id="3_ys2u5"]
+[ext_resource type="FontFile" uid="uid://byxm6p36kwldu" path="res://Fonts/tt-bricks-bold.otf" id="4_nw7ks"]
+[ext_resource type="StyleBox" uid="uid://cv738rdoy5ts1" path="res://UI/frame.tres" id="6_4w6xv"]
+[ext_resource type="FontFile" uid="uid://c3ta3c4epn5vn" path="res://Fonts/tt-bricks-bold-italics.otf" id="6_7p6q8"]
+[ext_resource type="FontFile" uid="uid://dl4fybnseni5p" path="res://Fonts/tt-bricks-medium-italics.otf" id="7_15r3q"]
+[ext_resource type="FontFile" uid="uid://cjd1gx528u4o1" path="res://Fonts/tt-bricks-medium.otf" id="8_b12mg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4w6xv"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oeq0d"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.51000005)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[resource]
+Button/colors/font_color = Color(0.11737422, 0.11737386, 0.11737395, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.74509805)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.084102295, 0.084102295, 0.084102295, 1)
+Button/colors/font_hover_pressed_color = Color(0.07786804, 0.07786802, 0.07786804, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.12883738, 0.12883738, 0.12883735, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = null
+Button/styles/disabled = ExtResource("1_imv5r")
+Button/styles/focus = ExtResource("2_ys2u5")
+Button/styles/hover = ExtResource("2_nw7ks")
+Button/styles/normal = ExtResource("3_ys2u5")
+Button/styles/pressed = ExtResource("3_ys2u5")
+Control/fonts/bold_font = ExtResource("4_nw7ks")
+Control/fonts/bold_italics_font = ExtResource("6_7p6q8")
+Control/fonts/font = ExtResource("4_nw7ks")
+Control/fonts/italics_font = ExtResource("7_15r3q")
+Control/fonts/normal_font = ExtResource("8_b12mg")
+FlatButton/styles/disabled = SubResource("StyleBoxEmpty_4w6xv")
+FlatButton/styles/hover = SubResource("StyleBoxEmpty_4w6xv")
+FlatButton/styles/normal = SubResource("StyleBoxEmpty_4w6xv")
+FlatButton/styles/pressed = SubResource("StyleBoxFlat_oeq0d")
+PanelContainer/styles/panel = ExtResource("6_4w6xv")

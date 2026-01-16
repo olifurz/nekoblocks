@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dls2aluvah24q"]
+[gd_scene load_steps=14 format=3 uid="uid://dls2aluvah24q"]
 
 [ext_resource type="Script" uid="uid://woregxoe1mhw" path="res://Scripts/LocalPlayer/LocalPlayerCharacter.cs" id="1_vqknx"]
 [ext_resource type="PackedScene" uid="uid://bax75nm6k8rm6" path="res://Scenes/Prefabs/Part.tscn" id="2_nbvbj"]
@@ -7,140 +7,190 @@
 
 [sub_resource type="Animation" id="Animation_gvja8"]
 length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightArmJoint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 0.5, 0)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftArmJoint")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1, 0.5, 0)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightLegJoint")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.5, -1, 0)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 1.5, 0)
+tracks/4/type = "position_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftLegJoint")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, -0.5, -1, 0)
+
+[sub_resource type="Animation" id="Animation_vqknx"]
+resource_name = "player_crouch"
+length = 0.25
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("RightLegJoint")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.9999999, 0.25, 1, -0.173648, 0, 0, 0.9848076)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("LeftLegJoint")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
-tracks/2/type = "rotation_3d"
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.99999994, 0.25, 1, -0.173648, 0, 0, 0.9848076)
+tracks/2/type = "position_3d"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LeftArmJoint")
+tracks/2/path = NodePath("RightArmJoint")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
-tracks/3/type = "rotation_3d"
+tracks/2/keys = PackedFloat32Array(0, 1, 1, 0.5, 0, 0.25, 1, 1, -1.4901161e-08, 0)
+tracks/3/type = "position_3d"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RightArmJoint")
+tracks/3/path = NodePath("LeftArmJoint")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/3/keys = PackedFloat32Array(0, 1, -1, 0.5, 0, 0.25, 1, -1, 0.0013827235, 0)
+tracks/4/type = "position_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftLegJoint")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, -0.5, -1, 0, 0.25, 1, -0.5, -1.2, -0.3)
+tracks/5/type = "position_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RightLegJoint")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.5, -1, 0, 0.25, 1, 0.5, -1.2, -0.3)
+tracks/6/type = "position_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Torso")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.25, 1, 0, -0.5, 0)
+tracks/7/type = "position_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Head")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0, 1.5, 0, 0.25, 1, 0, 1, 0)
 
-[sub_resource type="Animation" id="Animation_m1o7v"]
+[sub_resource type="Animation" id="Animation_26trc"]
 resource_name = "player_idle"
-length = 5.0
-step = 0.25
+length = 8.000004
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RightLegJoint")
+tracks/0/path = NodePath("RightArmJoint")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 5, 1, 0, 0, 0, 1)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.99999976, 2, 1, 0.043619357, 0, 0, 0.999048, 6, 1, -0.043619387, 0, 0, 0.99904794, 8, 1, 0, 0, 0, 0.99999976)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LeftLegJoint")
+tracks/1/path = NodePath("LeftArmJoint")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 5, 1, 0, 0, 0, 1)
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.99999976, 2, 1, -0.043619357, 0, 0, 0.999048, 6, 1, 0.043619387, 0, 0, 0.99904794, 8, 1, 0, 0, 0, 0.99999976)
 tracks/2/type = "rotation_3d"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LeftArmJoint")
+tracks/2/path = NodePath("LeftLegJoint")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1.5, 1, 0, 0, 0, 1, 2, 1, 0.13052613, 0, 0, 0.99144477, 3, 1, -0.13052621, 0, 0, 0.9914447, 3.5, 1, 0, 0, 0, 1, 5, 1, 0, 0, 0, 1)
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.99999976, 2, 1, 0.043619357, 0, 0, 0.999048, 6, 1, -0.043619387, 0, 0, 0.99904794, 8, 1, 0, 0, 0, 0.99999976)
 tracks/3/type = "rotation_3d"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RightArmJoint")
+tracks/3/path = NodePath("RightLegJoint")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1.5, 1, 0, 0, 0, 1, 2, 1, 0.13052613, 0, 0, 0.99144477, 3, 1, -0.13052621, 0, 0, 0.9914447, 3.5, 1, 0, 0, 0, 1, 5, 1, 0, 0, 0, 1)
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.99999976, 2, 1, -0.043619357, 0, 0, 0.999048, 6, 1, 0.043619387, 0, 0, 0.99904794, 8, 1, 0, 0, 0, 0.99999976)
 
-[sub_resource type="Animation" id="Animation_3586x"]
+[sub_resource type="Animation" id="Animation_nbvbj"]
 resource_name = "player_jump"
-length = 0.33335
-step = 0.16666667
+length = 0.25
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RightLegJoint")
+tracks/0/path = NodePath("RightArmJoint")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.9999998, 0.125, 1, 0.7071063, 0, 0, 0.70710677, 0.25, 1, 0.9999998, 0, 0, 4.3711367e-08)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LeftLegJoint")
+tracks/1/path = NodePath("LeftArmJoint")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
-tracks/2/type = "rotation_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LeftArmJoint")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.16666667, 1, 0.70710623, 0, 0, 0.7071068, 0.33333334, 1, 0.9999998, 0, 0, -4.3711367e-08)
-tracks/3/type = "rotation_3d"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RightArmJoint")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.16666667, 1, 0.7071063, 0, 0, 0.70710677, 0.33333334, 1, 0.9999998, 0, 0, 4.3711367e-08)
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.9999998, 0.125, 1, 0.70710623, 0, 0, 0.7071068, 0.25, 1, 0.9999998, 0, 0, -4.3711367e-08)
 
-[sub_resource type="Animation" id="Animation_1q8bt"]
+[sub_resource type="Animation" id="Animation_wb8tn"]
 resource_name = "player_walk"
-length = 1.000025
-step = 0.25
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RightLegJoint")
+tracks/0/path = NodePath("LeftArmJoint")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, 0.25881898, 0, 0, 0.96592575, 0.5, 1, 0, 0, 0, 1, 0.75, 1, -0.25881898, 0, 0, 0.96592575, 1, 1, 0, 0, 0, 1)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.9999998, 0.23333333, 1, 0.13052611, 0, 0, 0.9914447, 0.5, 1, 0, 0, 0, 0.9999998, 0.73333335, 1, -0.1305261, 0, 0, 0.99144465, 1, 1, 0, 0, 0, 0.9999998)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("LeftLegJoint")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, -0.258819, 0, 0, 0.96592575, 0.5, 1, 0, 0, 0, 1, 0.75, 1, 0.258819, 0, 0, 0.96592575, 1, 1, 0, 0, 0, 1)
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.9999998, 0.23333333, 1, -0.1305261, 0, 0, 0.99144465, 0.5, 1, 0, 0, 0, 0.9999998, 0.73333335, 1, 0.13052608, 0, 0, 0.99144465, 1, 1, 0, 0, 0, 0.9999998)
 tracks/2/type = "rotation_3d"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LeftArmJoint")
+tracks/2/path = NodePath("RightArmJoint")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, 0.25881898, 0, 0, 0.96592575, 0.5, 1, 0, 0, 0, 1, 0.75, 1, -0.25881898, 0, 0, 0.96592575, 1, 1, 0, 0, 0, 1)
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.9999998, 0.23333333, 1, -0.13052611, 0, 0, 0.9914447, 0.5, 1, 0, 0, 0, 0.9999998, 0.73333335, 1, 0.1305261, 0, 0, 0.99144465, 1, 1, 0, 0, 0, 0.9999998)
 tracks/3/type = "rotation_3d"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RightArmJoint")
+tracks/3/path = NodePath("RightLegJoint")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.25, 1, -0.25881898, 0, 0, 0.96592575, 0.5, 1, 0, 0, 0, 1, 0.75, 1, 0.25881898, 0, 0, 0.96592575, 1, 1, 0, 0, 0, 1)
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.9999998, 0.23333333, 1, 0.1305261, 0, 0, 0.99144465, 0.5, 1, 0, 0, 0, 0.9999998, 0.73333335, 1, -0.13052608, 0, 0, 0.99144465, 1, 1, 0, 0, 0, 0.9999998)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m1o7v"]
 _data = {
 &"RESET": SubResource("Animation_gvja8"),
-&"player_idle": SubResource("Animation_m1o7v"),
-&"player_jump": SubResource("Animation_3586x"),
-&"player_walk": SubResource("Animation_1q8bt")
+&"player_crouch": SubResource("Animation_vqknx"),
+&"player_idle": SubResource("Animation_26trc"),
+&"player_jump": SubResource("Animation_nbvbj"),
+&"player_walk": SubResource("Animation_wb8tn")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ukjwy"]
@@ -161,6 +211,8 @@ properties/2/replication_mode = 1
 
 [node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("Camera", "Sounds", "AnimationPlayer")]
 collision_layer = 128
+wall_min_slide_angle = 0.7853982
+floor_max_angle = 1.553343
 script = ExtResource("1_vqknx")
 Camera = NodePath("Camera")
 Sounds = NodePath("Sounds")
@@ -171,52 +223,40 @@ collision_layer = 128
 Size = Vector3(2, 2, 1)
 Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
 BrickColor = Color(0.98, 0, 0.016333085, 1)
-_size = Vector3(2, 2, 1)
-_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
-_brickColor = Color(0.98, 0, 0.016333085, 1)
 CanCollide = false
 
 [node name="Head" parent="." instance=ExtResource("2_nbvbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7252903e-08, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 collision_layer = 128
 Size = Vector3(1, 1, 1)
 Surfaces = PackedInt32Array(0, 0, 3, 0, 0, 0)
 BrickColor = Color(1, 1, 1, 1)
-_size = Vector3(1, 1, 1)
-_surfaces = PackedInt32Array(0, 0, 3, 0, 0, 0)
-_brickColor = Color(1, 1, 1, 1)
 CanCollide = false
 
 [node name="RightArmJoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, -1, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 1, 0.5, 0)
 
 [node name="RightArm" parent="RightArmJoint" instance=ExtResource("2_nbvbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 0)
-collision_layer = 128
-Size = Vector3(1, 2, 1)
-Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
-BrickColor = Color(1, 1, 1, 1)
-_size = Vector3(1, 2, 1)
-_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
-_brickColor = Color(1, 1, 1, 1)
-CanCollide = false
-
-[node name="LeftArmJoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9999993, 0, 0, 0, 0.9999993, 1, 0.5, 0)
-
-[node name="LeftArm" parent="LeftArmJoint" instance=ExtResource("2_nbvbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0)
 collision_layer = 128
 Size = Vector3(1, 2, 1)
 Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
 BrickColor = Color(1, 1, 1, 1)
-_size = Vector3(1, 2, 1)
-_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
-_brickColor = Color(1, 1, 1, 1)
+CanCollide = false
+
+[node name="LeftArmJoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -1, 0.5, 0)
+
+[node name="LeftArm" parent="LeftArmJoint" instance=ExtResource("2_nbvbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 0)
+collision_layer = 128
+Size = Vector3(1, 2, 1)
+Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+BrickColor = Color(1, 1, 1, 1)
 CanCollide = false
 
 [node name="LeftLegJoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0.5, -1.0000002, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -0.5, -1, 0)
 
 [node name="LeftLeg" parent="LeftLegJoint" instance=ExtResource("2_nbvbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99999976, 0)
@@ -224,13 +264,10 @@ collision_layer = 128
 Size = Vector3(1, 2, 1)
 Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
 BrickColor = Color(0, 0, 0, 1)
-_size = Vector3(1, 2, 1)
-_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
-_brickColor = Color(0, 0, 0, 1)
 CanCollide = false
 
 [node name="RightLegJoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, -0.5, -1.0000002, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.5, -1, 0)
 
 [node name="RightLeg" parent="RightLegJoint" instance=ExtResource("2_nbvbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.99999976, 0)
@@ -238,9 +275,6 @@ collision_layer = 128
 Size = Vector3(1, 2, 1)
 Surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
 BrickColor = Color(0, 0, 0, 1)
-_size = Vector3(1, 2, 1)
-_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
-_brickColor = Color(0, 0, 0, 1)
 CanCollide = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

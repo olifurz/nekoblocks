@@ -10,6 +10,7 @@ public partial class LocalPlayerCharacter : CharacterBody3D
 	[Export] public AnimationPlayer AnimationPlayer;
 	
 	public float WalkSpeed = 16.0f;
+	private float _targetWalkSpeed;
 	public float JumpVelocity = 35.0f;
 	private float _friction = 100.0f;
 	private float _mass = 15.0f;
@@ -30,37 +31,25 @@ public partial class LocalPlayerCharacter : CharacterBody3D
 		if (!IsMultiplayerAuthority()) return;
 		
 		_velocity = Velocity;
-		var nextAnim = "player_idle";
+		_targetWalkSpeed = WalkSpeed;
 		
-		if (!IsOnFloor())
-		{
-			_velocity.Y -= -GetGravity().Y * _mass * (float)delta;
-			nextAnim = "player_jump"; 
-		}
-		else
-		{
-			if (Input.IsActionJustPressed("player_jump"))
-			{
-				_velocity.Y = JumpVelocity;
-				nextAnim = "player_jump";
-			}
-			else
-			{
-				_velocity.Y = 0;
-			}
-		}
 		
 		Vector2 inputDir = Input.GetVector("player_move_left", "player_move_right", "player_move_forward", "player_move_back");
 		Vector3 direction = Camera.GlobalBasis * new Vector3(inputDir.X, 0, inputDir.Y);
 		direction.Y = 0;
 		
+		if (!IsOnFloor())
+			_velocity.Y -= -GetGravity().Y * _mass * (float)delta;
+		
 		if (direction.Length() > 0)
 			direction = direction.Normalized();
+		
+		UpdateAnimation();
 
 		if (direction != Vector3.Zero)
 		{
-			_velocity.X = direction.X * WalkSpeed;
-			_velocity.Z = direction.Z * WalkSpeed;
+			_velocity.X = direction.X * _targetWalkSpeed;
+			_velocity.Z = direction.Z * _targetWalkSpeed;
 			
 			// Calculate the angle to look at based on X and Z movement
 			// Fuck knows why this has to be negative, are we even calculating movement direction right?
@@ -68,10 +57,6 @@ public partial class LocalPlayerCharacter : CharacterBody3D
 			var newAngle = (float)Mathf.LerpAngle(Rotation.Y, targetAngle, delta * 10);
 			Rotation = new Vector3(Rotation.X, newAngle, Rotation.Z);
 			
-			if (IsOnFloor()) 
-			{
-				nextAnim = "player_walk";
-			}
 		}
 		else
 		{
@@ -79,9 +64,40 @@ public partial class LocalPlayerCharacter : CharacterBody3D
 			_velocity.Z = Mathf.MoveToward(Velocity.Z, 0, _friction * (float)delta);
 		} 
 		
-		ChangeAnimation(nextAnim);
 		Velocity = _velocity;
 		MoveAndSlide();
+	}
+
+	private void UpdateAnimation()
+	{
+		var _nextAnim = "player_idle";
+		if (!IsOnFloor())
+		{
+			_nextAnim = "player_jump"; 
+		}
+		else
+		{
+			if (Input.IsActionJustPressed("player_jump"))
+			{
+				_velocity.Y = JumpVelocity;
+				_nextAnim = "player_jump";
+			}
+			else if (Input.IsActionPressed("player_crouch"))
+			{
+				_nextAnim = "player_crouch";
+				_targetWalkSpeed /= 2;
+			}
+			else
+			{
+				if (_velocity != Vector3.Zero)
+				{
+					_velocity.Y = 0;
+					_nextAnim = "player_walk";
+				}
+			}
+		}
+		
+		ChangeAnimation(_nextAnim);
 	}
 	
 	private void ChangeAnimation(string newAnim)
@@ -91,7 +107,8 @@ public partial class LocalPlayerCharacter : CharacterBody3D
 		switch (newAnim)
 		{
 			case "player_jump" when !IsOnFloor() && !AnimationPlayer.IsPlaying():
-				// Special handling so that the player jump animation doesn't repeat whilst in the air
+			case "player_crouch" when IsOnFloor() && !AnimationPlayer.IsPlaying():
+				// Special handling so that the player crouch/jump animation doesn't repeat
 				return;
 			case "player_walk":
 				AnimationPlayer.SpeedScale = 1 + WalkSpeed / 15;

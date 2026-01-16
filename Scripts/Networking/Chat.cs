@@ -1,5 +1,6 @@
 using System.Linq;
 using Godot;
+using RobloxFiles;
 
 namespace Nekoblocks.Networking;
 
@@ -13,11 +14,32 @@ public partial class Chat : Node
 	public override void _EnterTree()
 	{
 		Instance = this;
+
+		Multiplayer.PeerConnected += OnPeerConnected;
+		Multiplayer.PeerDisconnected += OnPeerDisconnected;
 	}
 
 	///////////////////////////////////////////////
 	////////////// Global Functions ///////////////
 	///////////////////////////////////////////////
+
+	public override void _Process(double delta)
+	{
+		if (Input.IsActionJustPressed("chat_focus"))
+		{
+			_input.GrabFocus();
+		}
+	}
+
+	private void OnPeerConnected(long id)
+	{
+		SendMessage($"[style color=#A6A6A6][i]{NetworkUtils.GetPlayerFromId((int)id)} joined the game[/i][/style]");
+	}
+
+	private void OnPeerDisconnected(long id)
+	{
+		SendMessage($"[style color=#A6A6A6][i]{NetworkUtils.GetPlayerFromId((int)id)} left the game[/i][/style]");
+	}
 
 	///////////////////////////////////////////////
 	/////////////// Client Functions //////////////
@@ -28,23 +50,24 @@ public partial class Chat : Node
 		if (!NetworkUtils.IsPlayer) return;
 		
 		var playerGui = player.PlayerGui;
-		_chat = playerGui.GetNode<RichTextLabel>("Chat");
-		_input = playerGui.GetNode<LineEdit>("Chatbox");
+		_chat = playerGui.GetNode<RichTextLabel>("%Chatbox");
+		_input = playerGui.GetNode<LineEdit>("%Chatbar");
 			
 		_input.TextSubmitted += SendMessage;
 	}
 	private void SendMessage(string message)
 	{
 		RpcId(1, nameof(RequestMessageOnServer), message);
+		_input.ReleaseFocus();
+		_input.Text = string.Empty;
 	}
 	
 	[Rpc(CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
-	private void ReceiveMessage(string user, string message)
+	private void ReceiveMessage(string message, string user = null)
 	{
 		if (!NetworkUtils.IsPlayer) return;
 
-		_chat.AppendText($"\n{user}: {message}");
-		_input.Text = string.Empty;
+		_chat.AppendText(user != null ? $"\n{user}: {message}" : $"{message}");
 	}
 	
 	///////////////////////////////////////////////
@@ -54,8 +77,6 @@ public partial class Chat : Node
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
 	private void RequestMessageOnServer(string message)
 	{
-		if (!Multiplayer.IsServer()) return;
-		
 		switch (message.Length)
 		{
 			case 0:
@@ -65,7 +86,11 @@ public partial class Chat : Node
 				break;
 		}
 
-		string username = NetworkUtils.GetUsernameFromId(Multiplayer.GetRemoteSenderId());
-		Rpc(nameof(ReceiveMessage), username, message);
+		string username = null;
+		if (!Multiplayer.IsServer()) // If the server is sending it, don't bother with a username
+		{
+			username = NetworkUtils.GetUsernameFromId(Multiplayer.GetRemoteSenderId());
+		}
+		Rpc(nameof(ReceiveMessage), message, username);
 	}
 }
