@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cqcv8x3aun57m"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://cqcv8x3aun57m"]
 
 [ext_resource type="StyleBox" uid="uid://4d2kobdj8j3a" path="res://UI/button-disabled.tres" id="1_imv5r"]
 [ext_resource type="StyleBox" uid="uid://c8qcdt3rjvwxg" path="res://UI/button-primary-hover.tres" id="2_nw7ks"]
@@ -9,6 +9,9 @@
 [ext_resource type="FontFile" uid="uid://c3ta3c4epn5vn" path="res://Fonts/tt-bricks-bold-italics.otf" id="6_7p6q8"]
 [ext_resource type="FontFile" uid="uid://dl4fybnseni5p" path="res://Fonts/tt-bricks-medium-italics.otf" id="7_15r3q"]
 [ext_resource type="FontFile" uid="uid://cjd1gx528u4o1" path="res://Fonts/tt-bricks-medium.otf" id="8_b12mg"]
+[ext_resource type="StyleBox" uid="uid://d1y1pu1bwl1ai" path="res://UI/textbox.tres" id="9_jg0ng"]
+[ext_resource type="StyleBox" uid="uid://o33sdteb0n5m" path="res://UI/progress-frame.tres" id="10_b12mg"]
+[ext_resource type="StyleBox" uid="uid://dr4xor0y5svnw" path="res://UI/progress-fill.tres" id="11_jg0ng"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4w6xv"]
 content_margin_left = 4.0
@@ -28,20 +31,24 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="DPITexture" id="DPITexture_aw223"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#fff\" fill-opacity=\".75\" d=\"m1 3 2-2 5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5z\"/></svg>
+"
+
 [resource]
-Button/colors/font_color = Color(0.11737422, 0.11737386, 0.11737395, 1)
-Button/colors/font_disabled_color = Color(0, 0, 0, 0.74509805)
-Button/colors/font_focus_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_color = Color(0.084102295, 0.084102295, 0.084102295, 1)
-Button/colors/font_hover_pressed_color = Color(0.07786804, 0.07786802, 0.07786804, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(0.12883738, 0.12883738, 0.12883735, 1)
+Button/colors/font_color = Color(0.933671, 0.93367094, 0.93367094, 1)
+Button/colors/font_disabled_color = Color(0.93333334, 0.93333334, 0.93333334, 0.39215687)
+Button/colors/font_focus_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+Button/colors/font_hover_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+Button/colors/font_hover_pressed_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+Button/colors/font_outline_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+Button/colors/font_pressed_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
 Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
-Button/colors/icon_focus_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_normal_color = Color(1, 1, 1, 1)
-Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_focus_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+Button/colors/icon_hover_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+Button/colors/icon_hover_pressed_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+Button/colors/icon_normal_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+Button/colors/icon_pressed_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
 Button/constants/align_to_largest_stylebox = 0
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
@@ -62,4 +69,30 @@ FlatButton/styles/disabled = SubResource("StyleBoxEmpty_4w6xv")
 FlatButton/styles/hover = SubResource("StyleBoxEmpty_4w6xv")
 FlatButton/styles/normal = SubResource("StyleBoxEmpty_4w6xv")
 FlatButton/styles/pressed = SubResource("StyleBoxFlat_oeq0d")
+LineEdit/colors/caret_color = Color(0.95, 0.95, 0.95, 1)
+LineEdit/colors/clear_button_color = Color(0.875, 0.875, 0.875, 1)
+LineEdit/colors/clear_button_color_pressed = Color(1, 1, 1, 1)
+LineEdit/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+LineEdit/colors/font_outline_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_placeholder_color = Color(0.875, 0.875, 0.875, 0.6)
+LineEdit/colors/font_selected_color = Color(1, 1, 1, 1)
+LineEdit/colors/font_uneditable_color = Color(0.875, 0.875, 0.875, 0.5)
+LineEdit/colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+LineEdit/constants/caret_width = 1
+LineEdit/constants/minimum_character_width = 4
+LineEdit/constants/outline_size = 0
+LineEdit/font_sizes/font_size = 16
+LineEdit/icons/clear = SubResource("DPITexture_aw223")
+LineEdit/styles/focus = ExtResource("9_jg0ng")
+LineEdit/styles/normal = ExtResource("9_jg0ng")
+LineEdit/styles/read_only = ExtResource("9_jg0ng")
 PanelContainer/styles/panel = ExtResource("6_4w6xv")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/styles/background = ExtResource("10_b12mg")
+ProgressBar/styles/fill = ExtResource("11_jg0ng")
+TextEdit/styles/focus = ExtResource("9_jg0ng")
+TextEdit/styles/normal = ExtResource("9_jg0ng")
+TextEdit/styles/read_only = ExtResource("9_jg0ng")

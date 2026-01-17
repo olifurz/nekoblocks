@@ -1247,11 +1247,6 @@ namespace RobloxFiles.Enums
         Vector3,
     }
 
-    public enum CompressionAlgorithm
-    {
-        Zstd,
-    }
-
     public enum ComputerCameraMovementMode
     {
         Default,

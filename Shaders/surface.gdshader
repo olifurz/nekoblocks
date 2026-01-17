@@ -4,14 +4,14 @@ uniform sampler2D texture_atlas : source_color;
 uniform vec2 atlas_grid = vec2(2.0, 20.0); 
 
 // Surface Indices
-instance uniform int surf_top = 0;
-instance uniform int surf_bottom = 0;
-instance uniform int surf_front = 0;
-instance uniform int surf_back = 0;
-instance uniform int surf_left = 0;
-instance uniform int surf_right = 0;
+instance uniform int surf_top;
+instance uniform int surf_bottom;
+instance uniform int surf_front;
+instance uniform int surf_back;
+instance uniform int surf_left;
+instance uniform int surf_right;
 
-instance uniform vec4 brick_color : source_color = vec4(1.0);
+instance uniform vec4 colour : source_color = vec4(1.0);
 instance uniform float roughness = 0.3;
 
 varying vec3 local_pos;
@@ -50,9 +50,9 @@ void fragment() {
     
     vec4 tex_data = texture(texture_atlas, final_uv);
     
-    vec3 background = brick_color.rgb;
+    vec3 background = colour.rgb;
     
-    vec3 foreground = tex_data.rgb * brick_color.rgb;
+    vec3 foreground = tex_data.rgb * colour.rgb;
     
     ALBEDO = mix(background, foreground, tex_data.a);
 	ROUGHNESS = roughness;

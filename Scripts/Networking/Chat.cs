@@ -1,5 +1,6 @@
 using System.Linq;
 using Godot;
+using Nekoblocks.World;
 using RobloxFiles;
 
 namespace Nekoblocks.Networking;
@@ -68,6 +69,8 @@ public partial class Chat : Node
 		if (!NetworkUtils.IsPlayer) return;
 
 		_chat.AppendText(user != null ? $"\n{user}: {message}" : $"{message}");
+		_chat.ScrollToLine(_chat.GetLineCount()-1);
+		SoundManager.Instance.PlayLocal("res://Sounds/chat.wav", 0.5f);
 	}
 	
 	///////////////////////////////////////////////

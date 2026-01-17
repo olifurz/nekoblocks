@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using Nekoblocks.Networking;
+using Nekoblocks.Scripts;
 
 namespace Nekoblocks.Limbo;
 
@@ -13,6 +14,8 @@ public partial class Limbo : Node
 	private Button _loginButton;
 	private Button _serverButton;
 	private LineEdit _serverIp;
+	
+	private readonly RobloxMapLoader _robloxMapLoader = new();
 	
 	public override void _Ready()
 	{
@@ -81,23 +84,36 @@ public partial class Limbo : Node
 	{
 		try
 		{
-			Login.Visible = false;
-			Loading.Visible = true;
-			_loadingLabel.Text = "Preparing world";
+			var fileDialog = new FileDialog();
+			AddChild(fileDialog);
+			fileDialog.UseNativeDialog = true;
+			fileDialog.Filters = ["*.rbxl ; Roblox Place File"];
+			fileDialog.FileFilterToggleEnabled = false;
+			fileDialog.FileMode = FileDialog.FileModeEnum.OpenFile;
+			fileDialog.FileSelected += (path) =>
+			{
+				Login.Visible = false;
+				Loading.Visible = true;
+				_loadingLabel.Text = "Preparing world";
 
-			var gameScene = ResourceLoader.Load<PackedScene>("res://Scenes/Engine/Game.tscn");
-			var game = gameScene.Instantiate();
+				var gameScene = ResourceLoader.Load<PackedScene>("res://Scenes/Engine/Game.tscn");
+				var game = gameScene.Instantiate();
 			
-			GetTree().Root.AddChild(game);
-			GetTree().CurrentScene = game;
+				GetTree().Root.AddChild(game);
+				GetTree().CurrentScene = game;
 
 
-			var networkManager = game.GetNode<NetworkManager>("%NetworkManager");
-			_loadingLabel.Text = "Starting server";
-			networkManager.StartHost();
+				var networkManager = game.GetNode<NetworkManager>("%NetworkManager");
+				_loadingLabel.Text = "Starting server";
+				networkManager.StartHost();
+				
+				_robloxMapLoader.Load(path);
 			
-			_loadingLabel.Text = "Server started!";
-			QueueFree();
+				_loadingLabel.Text = "Server started!";
+				QueueFree();
+			};
+			fileDialog.Canceled += () => fileDialog.QueueFree();
+			fileDialog.Show();
 		}
 		catch (Exception e)
 		{

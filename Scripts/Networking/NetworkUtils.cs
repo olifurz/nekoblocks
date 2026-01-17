@@ -49,6 +49,8 @@ public static class NetworkUtils
         return !IsPlayer ? throw new Exception("Attempted to get the local player on a server") : GetPlayers().FirstOrDefault(p => p.IsMultiplayerAuthority());
     }
     
+    
+    
     /// <summary>
     /// Fetch the username from the players list based on id
     /// </summary>

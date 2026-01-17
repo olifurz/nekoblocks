@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvtd0iyo6wufb"]
+[gd_scene load_steps=3 format=3 uid="uid://cvtd0iyo6wufb"]
 
 [ext_resource type="Script" uid="uid://c2mj77fetol11" path="res://Scripts/Networking/Player.cs" id="1_fiu32"]
+[ext_resource type="Theme" uid="uid://cqcv8x3aun57m" path="res://UI/maintheme.tres" id="2_42ksm"]
 
 [node name="Player" type="Node"]
 script = ExtResource("1_fiu32")
@@ -15,6 +16,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
+theme = ExtResource("2_42ksm")
 
 [node name="Stack" type="VBoxContainer" parent="PlayerGui"]
 layout_mode = 1

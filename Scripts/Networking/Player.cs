@@ -8,7 +8,7 @@ public partial class Player : Node
 {
 	public int Id;
 	public string Username;
-	public LocalPlayerCharacter Character { get; private set; }
+	public Character Character { get; private set; }
 
 	public Control PlayerGui { get; private set; }
 
@@ -43,7 +43,7 @@ public partial class Player : Node
 			throw new NullReferenceException("$\"Failed to find character at {characterPath} for Player {Id}\"");
 		}
 
-		Character = GetNode<LocalPlayerCharacter>(characterPath);
+		Character = GetNode<Character>(characterPath);
 	
 		var camera = Character.GetNode<Camera3D>("Camera");
 		camera.Current = IsMultiplayerAuthority();

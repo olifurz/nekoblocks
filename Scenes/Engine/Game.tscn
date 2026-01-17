@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://44mr3jh4y0mg" path="res://Textures/Sky/default.png" id="5_3586x"]
 [ext_resource type="Script" uid="uid://c0et4gn63uo4r" path="res://Scripts/Networking/Chat.cs" id="5_wdpi3"]
 [ext_resource type="Script" uid="uid://0i8p2yr8m21p" path="res://Scripts/Networking/NetworkManager.cs" id="5_y3kpf"]
-[ext_resource type="Script" uid="uid://dd7lfd142u3xw" path="res://Scripts/TestMapLoader.cs" id="6_10ki7"]
+[ext_resource type="Script" uid="uid://ch5slc4im1vv4" path="res://Scripts/World/SoundManager.cs" id="5_y18gj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_eselh"]
 panorama = ExtResource("5_3586x")
@@ -43,9 +43,6 @@ directional_shadow_max_distance = 500.0
 [node name="Environment" type="WorldEnvironment" parent="Workspace/Lighting"]
 environment = SubResource("Environment_iqevm")
 
-[node name="TestMapLoader" type="Node" parent="Workspace"]
-script = ExtResource("6_10ki7")
-
 [node name="SpawnLocation" type="Node3D" parent="Workspace"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -65,3 +62,7 @@ spawn_path = NodePath("../../Workspace")
 [node name="Chat" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("5_wdpi3")
+
+[node name="SoundManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_y18gj")

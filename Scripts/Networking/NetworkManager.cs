@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using Godot;
 using Nekoblocks.LocalPlayer;
+using Nekoblocks.Scripts;
+using RobloxFiles;
 
 namespace Nekoblocks.Networking;
 
@@ -27,7 +29,7 @@ public partial class NetworkManager : Node
 		Multiplayer.ConnectedToServer += OnConnectedToServer;
 		Multiplayer.ConnectionFailed += OnConnectionFailed;
 		Multiplayer.ServerDisconnected += OnServerDisconnected;
-
+		
 		_playerSpawner = GetNode<MultiplayerSpawner>("PlayerSpawner");
 		_playerSpawner.SpawnFunction = Callable.From<Variant, Node>(SpawnPlayer);
 		
@@ -84,7 +86,7 @@ public partial class NetworkManager : Node
 		var dict = data.AsGodotDictionary();
 		var id = dict["id"].AsInt32();
 		var scene = ResourceLoader.Load<PackedScene>("res://Scenes/Prefabs/Character.tscn");
-		var character = (LocalPlayerCharacter)scene.Instantiate();
+		var character = (Character)scene.Instantiate();
 		
 		character.Name = id.ToString();
 		character.Position = dict["position"].AsVector3();
@@ -135,7 +137,7 @@ public partial class NetworkManager : Node
 		CallDeferred(MethodName.LinkPlayerAndCharacter, player, character);
 	}
 	
-	private void LinkPlayerAndCharacter(Player player, LocalPlayerCharacter character)
+	private void LinkPlayerAndCharacter(Player player, Character character)
 	{
 		player.Rpc(nameof(Player.SetCharacter), character.GetPath());
 	}

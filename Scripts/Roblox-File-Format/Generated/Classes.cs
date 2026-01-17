@@ -3284,7 +3284,6 @@ namespace RobloxFiles
         public bool HighCompression;
         public bool SerializePatch = true;
         public bool UseFileLevelCompressionInsteadOfChunk;
-        public bool ZstdCompression;
     }
 
     public class InputAction : Instance
