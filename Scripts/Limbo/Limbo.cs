@@ -11,8 +11,6 @@ public partial class Limbo : Node
 	private Label _loadingLabel;
 	
 	[Export] public Control Login;
-	private Button _loginButton;
-	private Button _serverButton;
 	private LineEdit _serverIp;
 	
 	private readonly RobloxMapLoader _robloxMapLoader = new();
@@ -21,10 +19,12 @@ public partial class Limbo : Node
 	{
 		_loadingLabel = Loading.GetNode<Label>("Label");
 		
-		_loginButton = Login.GetNode<Button>("LoginButton");
-		_loginButton.Pressed += ConnectToServer;
-		_serverButton = Login.GetNode<Button>("ServerButton");
-		_serverButton.Pressed += StartServer;
+		var loginButton = Login.GetNode<Button>("LoginButton");
+		loginButton.Pressed += ConnectToServer;
+		var serverButton = Login.GetNode<Button>("ServerButton");
+		serverButton.Pressed += StartServer;
+		var editorButton = Login.GetNode<Button>("EditorButton");
+		editorButton.Pressed += () => GetTree().ChangeSceneToFile("res://Scenes/Engine/Editor.tscn");
 		
 		_serverIp = Login.GetNode<LineEdit>("ServerIP");
 		

@@ -1,17 +1,26 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://cqcv8x3aun57m"]
+[gd_resource type="Theme" load_steps=25 format=3 uid="uid://cqcv8x3aun57m"]
 
 [ext_resource type="StyleBox" uid="uid://4d2kobdj8j3a" path="res://UI/button-disabled.tres" id="1_imv5r"]
 [ext_resource type="StyleBox" uid="uid://c8qcdt3rjvwxg" path="res://UI/button-primary-hover.tres" id="2_nw7ks"]
 [ext_resource type="StyleBox" uid="uid://cc8nblc2j4xhn" path="res://UI/button-focus.tres" id="2_ys2u5"]
 [ext_resource type="StyleBox" uid="uid://bwh8g72vhxlw5" path="res://UI/button-primary.tres" id="3_ys2u5"]
 [ext_resource type="FontFile" uid="uid://byxm6p36kwldu" path="res://Fonts/tt-bricks-bold.otf" id="4_nw7ks"]
-[ext_resource type="StyleBox" uid="uid://cv738rdoy5ts1" path="res://UI/frame.tres" id="6_4w6xv"]
 [ext_resource type="FontFile" uid="uid://c3ta3c4epn5vn" path="res://Fonts/tt-bricks-bold-italics.otf" id="6_7p6q8"]
 [ext_resource type="FontFile" uid="uid://dl4fybnseni5p" path="res://Fonts/tt-bricks-medium-italics.otf" id="7_15r3q"]
 [ext_resource type="FontFile" uid="uid://cjd1gx528u4o1" path="res://Fonts/tt-bricks-medium.otf" id="8_b12mg"]
+[ext_resource type="StyleBox" uid="uid://bxxddsse8lswe" path="res://UI/panel-editor.tres" id="9_4j3wx"]
 [ext_resource type="StyleBox" uid="uid://d1y1pu1bwl1ai" path="res://UI/textbox.tres" id="9_jg0ng"]
 [ext_resource type="StyleBox" uid="uid://o33sdteb0n5m" path="res://UI/progress-frame.tres" id="10_b12mg"]
+[ext_resource type="StyleBox" uid="uid://cv738rdoy5ts1" path="res://UI/panel.tres" id="10_qni4d"]
 [ext_resource type="StyleBox" uid="uid://dr4xor0y5svnw" path="res://UI/progress-fill.tres" id="11_jg0ng"]
+[ext_resource type="StyleBox" uid="uid://b20d8abhx5eyy" path="res://UI/tab-frame.tres" id="13_0t5mu"]
+[ext_resource type="StyleBox" uid="uid://bsfi31n4dfn4i" path="res://UI/tab.tres" id="14_3fl75"]
+[ext_resource type="StyleBox" uid="uid://o0y157qmdvwa" path="res://UI/tab-unselected.tres" id="15_3fl75"]
+[ext_resource type="StyleBox" uid="uid://fkr01ileyvvl" path="res://UI/tab-hovered.tres" id="15_7hqvg"]
+[ext_resource type="StyleBox" uid="uid://c0rmvls02ljyq" path="res://UI/tab-background.tres" id="16_qni4d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hqvg"]
+bg_color = Color(0.2969205, 0.2969205, 0.29692036, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4w6xv"]
 content_margin_left = 4.0
@@ -34,6 +43,10 @@ corner_detail = 5
 [sub_resource type="DPITexture" id="DPITexture_aw223"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#fff\" fill-opacity=\".75\" d=\"m1 3 2-2 5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5z\"/></svg>
 "
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p5fv1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7hqvg"]
 
 [resource]
 Button/colors/font_color = Color(0.933671, 0.93367094, 0.93367094, 1)
@@ -65,6 +78,10 @@ Control/fonts/bold_italics_font = ExtResource("6_7p6q8")
 Control/fonts/font = ExtResource("4_nw7ks")
 Control/fonts/italics_font = ExtResource("7_15r3q")
 Control/fonts/normal_font = ExtResource("8_b12mg")
+Divider/base_type = &"Panel"
+Divider/styles/panel = SubResource("StyleBoxFlat_7hqvg")
+EditorPanelContainer/base_type = &"PanelContainer"
+EditorPanelContainer/styles/panel = ExtResource("9_4j3wx")
 FlatButton/styles/disabled = SubResource("StyleBoxEmpty_4w6xv")
 FlatButton/styles/hover = SubResource("StyleBoxEmpty_4w6xv")
 FlatButton/styles/normal = SubResource("StyleBoxEmpty_4w6xv")
@@ -86,13 +103,26 @@ LineEdit/icons/clear = SubResource("DPITexture_aw223")
 LineEdit/styles/focus = ExtResource("9_jg0ng")
 LineEdit/styles/normal = ExtResource("9_jg0ng")
 LineEdit/styles/read_only = ExtResource("9_jg0ng")
-PanelContainer/styles/panel = ExtResource("6_4w6xv")
+PanelContainer/styles/panel = ExtResource("10_qni4d")
 ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
 ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
 ProgressBar/constants/outline_size = 0
 ProgressBar/font_sizes/font_size = 16
 ProgressBar/styles/background = ExtResource("10_b12mg")
 ProgressBar/styles/fill = ExtResource("11_jg0ng")
+TabContainer/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+TabContainer/colors/font_hovered_color = Color(0.7019608, 0.7019608, 0.7019608, 1)
+TabContainer/colors/font_selected_color = Color(0.95, 0.95, 0.95, 1)
+TabContainer/colors/font_unselected_color = Color(0.7, 0.7, 0.7, 1)
+TabContainer/constants/outline_size = 0
+TabContainer/styles/panel = ExtResource("13_0t5mu")
+TabContainer/styles/tab_disabled = null
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_p5fv1")
+TabContainer/styles/tab_hovered = ExtResource("15_7hqvg")
+TabContainer/styles/tab_selected = ExtResource("14_3fl75")
+TabContainer/styles/tab_unselected = ExtResource("15_3fl75")
+TabContainer/styles/tabbar_background = ExtResource("16_qni4d")
 TextEdit/styles/focus = ExtResource("9_jg0ng")
 TextEdit/styles/normal = ExtResource("9_jg0ng")
 TextEdit/styles/read_only = ExtResource("9_jg0ng")
+Tree/styles/panel = SubResource("StyleBoxEmpty_7hqvg")

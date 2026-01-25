@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://o0y157qmdvwa"]
+
+[ext_resource type="Texture2D" uid="uid://dy08aki8hhu2p" path="res://Textures/UI/tab-button-unselected.svg" id="1_aorur"]
+
+[resource]
+texture = ExtResource("1_aorur")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0

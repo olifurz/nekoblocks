@@ -46,9 +46,12 @@ void fragment() {
     float row = row_start + floor(tiled_uv.y);
     
     vec2 atlas_offset = vec2(col, row);
-    vec2 final_uv = (fract(tiled_uv) + atlas_offset) / atlas_grid;
+	
+	vec2 uv_in_tile = fract(tiled_uv);
+    uv_in_tile = clamp(uv_in_tile, 0.001, 0.999); 
+	vec2 final_uv = (uv_in_tile + atlas_offset) / atlas_grid;
     
-    vec4 tex_data = texture(texture_atlas, final_uv);
+	vec4 tex_data = textureLod(texture_atlas, final_uv, 0.0);
     
     vec3 background = colour.rgb;
     

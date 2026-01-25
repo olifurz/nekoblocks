@@ -1,0 +1,8 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://b20d8abhx5eyy"]
+
+[ext_resource type="Texture2D" uid="uid://0ufjak8fkqjd" path="res://Textures/UI/tab-frame.svg" id="1_5impb"]
+
+[resource]
+texture = ExtResource("1_5impb")
+texture_margin_top = 2.0
+texture_margin_bottom = 2.0

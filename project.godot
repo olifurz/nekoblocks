@@ -27,6 +27,7 @@ GTweensGodotUpdater="*res://Scripts/Plugins/GTweensGodotUpdater.cs"
 window/size/viewport_width=1440
 window/size/viewport_height=1080
 window/size/sharp_corners=true
+display_server/driver.linuxbsd="wayland"
 
 [dotnet]
 
@@ -113,9 +114,16 @@ player_crouch={
 ]
 }
 
+[physics]
+
+3d/run_on_separate_thread=true
+3d/physics_engine="Jolt Physics"
+3d/solver/solver_iterations=4
+
 [rendering]
 
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+shading/overrides/force_vertex_shading=true
+driver/depth_prepass/enable=false
 anti_aliasing/quality/msaa_3d=1
 limits/global_shader_variables/buffer_size=262144
 anti_aliasing/quality/screen_space_aa=1

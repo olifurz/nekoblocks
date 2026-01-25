@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvtd0iyo6wufb"]
+[gd_scene load_steps=4 format=3 uid="uid://cvtd0iyo6wufb"]
 
 [ext_resource type="Script" uid="uid://c2mj77fetol11" path="res://Scripts/Networking/Player.cs" id="1_fiu32"]
 [ext_resource type="Theme" uid="uid://cqcv8x3aun57m" path="res://UI/maintheme.tres" id="2_42ksm"]
+[ext_resource type="Texture2D" uid="uid://ghdyxgq3grx" path="res://Textures/Icons/menu.svg" id="3_qkbd8"]
 
 [node name="Player" type="Node"]
 script = ExtResource("1_fiu32")
@@ -44,20 +45,6 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
-
-[node name="Chatbar" type="LineEdit" parent="PlayerGui/MarginContainer/Container"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -30.0
-grow_horizontal = 2
-grow_vertical = 0
-placeholder_text = "Click here or press the / key to chat. Be respectful!"
-drag_and_drop_selection_enabled = false
 
 [node name="ChatContainer" type="PanelContainer" parent="PlayerGui/MarginContainer/Container"]
 custom_minimum_size = Vector2(400, 250)
@@ -109,3 +96,28 @@ size_flags_horizontal = 0
 [node name="Label" type="Label" parent="PlayerGui/MarginContainer/Container/PlayerListContainer/VBoxContainer/Entry/HBoxContainer"]
 layout_mode = 2
 text = "PlayerName"
+
+[node name="Toolbar" type="HBoxContainer" parent="PlayerGui/MarginContainer/Container"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MenuButton" type="Button" parent="PlayerGui/MarginContainer/Container/Toolbar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+icon = ExtResource("3_qkbd8")
+icon_alignment = 1
+
+[node name="Chatbar" type="LineEdit" parent="PlayerGui/MarginContainer/Container/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Click here or press the / key to chat. Be respectful!"
+drag_and_drop_selection_enabled = false

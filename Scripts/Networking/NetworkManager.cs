@@ -2,8 +2,6 @@ using System;
 using System.Linq;
 using Godot;
 using Nekoblocks.LocalPlayer;
-using Nekoblocks.Scripts;
-using RobloxFiles;
 
 namespace Nekoblocks.Networking;
 

@@ -1,0 +1,172 @@
+[gd_scene load_steps=12 format=3 uid="uid://cf8xn2ncqb4wf"]
+
+[ext_resource type="StyleBox" uid="uid://c0rmvls02ljyq" path="res://UI/tab-background.tres" id="1_314pa"]
+[ext_resource type="Texture2D" uid="uid://b5el5h3d4swt7" path="res://Textures/Icons/exit.svg" id="2_di7rj"]
+[ext_resource type="Texture2D" uid="uid://4136kof2rj4j" path="res://Textures/Icons/save.svg" id="2_pthtt"]
+[ext_resource type="Texture2D" uid="uid://cn11m3dfd7m2c" path="res://Textures/Icons/new.svg" id="3_hf5t3"]
+[ext_resource type="Texture2D" uid="uid://cexeihal6sgt8" path="res://Textures/Logos/nekoblocks.svg" id="3_pthtt"]
+[ext_resource type="Texture2D" uid="uid://cyye3g82mc60" path="res://Textures/Icons/folder-open.svg" id="4_mwwfj"]
+[ext_resource type="ButtonGroup" uid="uid://o0j3vlfjqhcr" path="res://UI/ButtonGroups/transform-mode.tres" id="6_1s6ll"]
+[ext_resource type="Texture2D" uid="uid://2rqg4l60n51p" path="res://Textures/Icons/mouse.svg" id="6_6rpk2"]
+[ext_resource type="Texture2D" uid="uid://4wuci4maotu1" path="res://Textures/Icons/move.svg" id="8_gecl0"]
+[ext_resource type="Texture2D" uid="uid://bp2o5yeej85wr" path="res://Textures/Icons/rotate.svg" id="9_756h3"]
+[ext_resource type="Texture2D" uid="uid://bxwvo8b4atoa8" path="res://Textures/Icons/scale.svg" id="10_b31rx"]
+
+[node name="Editor" type="Node3D"]
+
+[node name="EditorUI" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("1_314pa")
+
+[node name="Stack" type="VBoxContainer" parent="EditorUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Tabs" type="TabContainer" parent="EditorUI/Stack"]
+layout_mode = 2
+current_tab = 1
+deselect_enabled = true
+
+[node name="File" type="HBoxContainer" parent="EditorUI/Stack/Tabs"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Exit" type="Button" parent="EditorUI/Stack/Tabs/File"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+icon = ExtResource("2_di7rj")
+flat = true
+
+[node name="Divider" type="Panel" parent="EditorUI/Stack/Tabs/File"]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 2
+theme_type_variation = &"Divider"
+
+[node name="New" type="Button" parent="EditorUI/Stack/Tabs/File"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+text = "New"
+icon = ExtResource("3_hf5t3")
+flat = true
+
+[node name="File" type="Button" parent="EditorUI/Stack/Tabs/File"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+text = "Open"
+icon = ExtResource("4_mwwfj")
+flat = true
+
+[node name="Save" type="Button" parent="EditorUI/Stack/Tabs/File"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+text = "Save"
+icon = ExtResource("2_pthtt")
+flat = true
+
+[node name="Divider2" type="Panel" parent="EditorUI/Stack/Tabs/File"]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 2
+theme_type_variation = &"Divider"
+
+[node name="Home" type="HBoxContainer" parent="EditorUI/Stack/Tabs"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Cursor" type="Button" parent="EditorUI/Stack/Tabs/Home"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+toggle_mode = true
+button_group = ExtResource("6_1s6ll")
+icon = ExtResource("6_6rpk2")
+flat = true
+
+[node name="Move" type="Button" parent="EditorUI/Stack/Tabs/Home"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+toggle_mode = true
+button_group = ExtResource("6_1s6ll")
+icon = ExtResource("8_gecl0")
+flat = true
+
+[node name="Rotate" type="Button" parent="EditorUI/Stack/Tabs/Home"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+toggle_mode = true
+button_group = ExtResource("6_1s6ll")
+icon = ExtResource("9_756h3")
+flat = true
+
+[node name="Scale" type="Button" parent="EditorUI/Stack/Tabs/Home"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+toggle_mode = true
+button_group = ExtResource("6_1s6ll")
+icon = ExtResource("10_b31rx")
+flat = true
+
+[node name="Divider" type="Panel" parent="EditorUI/Stack/Tabs/Home"]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 2
+theme_type_variation = &"Divider"
+
+[node name="Containers" type="HSplitContainer" parent="EditorUI/Stack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="VSplitContainer" parent="EditorUI/Stack/Containers"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_type_variation = &"EditorPanelContainer"
+
+[node name="Explorer" type="PanelContainer" parent="EditorUI/Stack/Containers/Left"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"EditorPanelContainer"
+
+[node name="Label" type="Label" parent="EditorUI/Stack/Containers/Left/Explorer"]
+layout_mode = 2
+
+[node name="Tree" type="Tree" parent="EditorUI/Stack/Containers/Left/Explorer"]
+layout_mode = 2
+
+[node name="Explorer2" type="PanelContainer" parent="EditorUI/Stack/Containers/Left"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"EditorPanelContainer"
+
+[node name="CenterRight" type="HSplitContainer" parent="EditorUI/Stack/Containers"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameViewport" type="PanelContainer" parent="EditorUI/Stack/Containers/CenterRight"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"EditorPanelContainer"
+
+[node name="SubViewport" type="SubViewport" parent="EditorUI/Stack/Containers/CenterRight/GameViewport"]
+
+[node name="TextureRect" type="TextureRect" parent="EditorUI/Stack/Containers/CenterRight/GameViewport"]
+modulate = Color(1, 1, 1, 0.09019608)
+clip_contents = true
+layout_mode = 2
+texture = ExtResource("3_pthtt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Right" type="PanelContainer" parent="EditorUI/Stack/Containers/CenterRight"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_type_variation = &"EditorPanelContainer"

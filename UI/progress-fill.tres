@@ -1,10 +1,6 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dr4xor0y5svnw"]
 
-[ext_resource type="Texture2D" uid="uid://cteqm3jjo77rp" path="res://Textures/UI/progress-fill.png" id="1_gp2am"]
+[ext_resource type="Texture2D" uid="uid://dtm03wuldam30" path="res://Textures/UI/progress-fill.svg" id="1_gp2am"]
 
 [resource]
 texture = ExtResource("1_gp2am")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0

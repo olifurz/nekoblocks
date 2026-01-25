@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://c0rmvls02ljyq"]
+
+[ext_resource type="Texture2D" uid="uid://d2prf8drkyfve" path="res://Textures/UI/tab-background.svg" id="1_cg11j"]
+
+[resource]
+texture = ExtResource("1_cg11j")

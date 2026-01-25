@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="16.32292mm"
+   height="16.322922mm"
+   viewBox="0 0 16.32292 16.322922"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1"><linearGradient
+       id="linearGradient4"><stop
+         style="stop-color:#4e4e4e;stop-opacity:1;"
+         offset="0"
+         id="stop4" /><stop
+         style="stop-color:#323232;stop-opacity:1;"
+         offset="1"
+         id="stop15" /></linearGradient><linearGradient
+       id="swatch56"><stop
+         style="stop-color:#737373;stop-opacity:1;"
+         offset="0"
+         id="stop56" /></linearGradient><linearGradient
+       xlink:href="#linearGradient4"
+       id="linearGradient17"
+       x1="13.329441"
+       y1="151.70512"
+       x2="13.329441"
+       y2="168.02806"
+       gradientUnits="userSpaceOnUse" /></defs><g
+     id="layer1"
+     transform="translate(-5.1679801,-151.70512)"><rect
+       style="fill:url(#linearGradient17);fill-opacity:1;stroke:#737373;stroke-width:1.32292;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       id="rect6-3"
+       width="15"
+       height="15"
+       x="5.8294401"
+       y="152.36659"
+       ry="0" /></g></svg>
